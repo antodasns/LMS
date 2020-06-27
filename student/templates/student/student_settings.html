@@ -1,0 +1,158 @@
+{%extends 'student/student_layout.html'%}
+{% load static %}
+{%block content%}
+
+		<link href="{%static 'css/style.css'%}" rel="stylesheet">
+	<!-- Left Sidebar Start -->
+	<nav class="vertical_nav">
+   <div class="left_section menu_left" id="js-menu" >
+      <div class="left_section">
+         <ul>
+            <li class="menu--item">
+               <a href="{% url 'student:stu_index'%}" class="menu--link" title="Home">
+               <i class='uil uil-home-alt menu--icon'></i>
+               <span class="menu--label">Home</span>
+               </a>
+            </li>
+            <li class="menu--item">
+               <a href="{% url 'student:stu_courses'%}" class="menu--link" title="Live Streams">
+               <i class='uil uil-book-alt menu--icon'></i>
+               <span class="menu--label">Courses</span>
+               </a>
+            </li>
+            <li class="menu--item">
+               <a href="{% url 'student:stu_purchased_courses'%}" class="menu--link" title="Explore">
+               <i class='uil uil-book-alt menu--icon'></i>
+               <span class="menu--label">Purchased Courses</span>
+               </a>
+            </li>
+            <li class="menu--item">
+               <a href="{% url 'student:stu_message'%}" class="menu--link" title="Categories">
+               <i class='uil uil-comments menu--icon'></i>
+               <span class="menu--label">Messages</span>
+               </a>
+            </li>
+            <!-- <li class="menu--item  menu--item__has_sub_menu">
+               <label class="menu--link" title="Tests">
+                 <i class='uil uil-clipboard-alt menu--icon'></i>
+                 <span class="menu--label">Tests</span>
+               </label>
+               
+               </li> -->
+            <li class="menu--item">
+               <a href="{% url 'student:stu_certificate'%}" class="menu--link" title="Categories">
+               <i class='uil uil-award menu--icon'></i>
+               <span class="menu--label">Certificates</span>
+               </a>
+            </li>
+            <li class="menu--item">
+               <a href="{% url 'student:stu_statement'%}" class="menu--link" title="Categories">
+               <i class='uil uil-file-alt menu--icon'></i>
+               <span class="menu--label">Statements</span>
+               </a>
+            </li>
+         </ul>
+      </div>
+      <div class="left_section pt-2">
+         <ul>
+            <li class="menu--item">
+               <a href="#" class="menu--link active" title="Setting">
+               <i class='uil uil-cog menu--icon'></i>
+               <span class="menu--label">Setting</span>
+               </a>
+            </li>
+            <!-- <li class="menu--item">
+               <a href="{% url 'student:stu_help'%}" class="menu--link" title="Help">
+               <i class='uil uil-question-circle menu--icon'></i>
+               <span class="menu--label">Help</span>
+               </a>
+            </li> -->
+         </ul>
+      </div>
+      <div class="left_footer">
+         <div class="left_footer_content">
+            <p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+         </div>
+      </div>
+   </div>
+</nav>
+<!-- Left Sidebar End -->
+<!-- Body Start -->
+<div class="wrapper">
+<div class="sa4d25">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-12">
+            <h2 class="st_title"><i class='uil uil-cog'></i> Setting</h2>
+            <div class="setting_tabs">
+            </div>
+            <br><br>
+            <div class="tab-content" id="pills-tabContent">
+               <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+                  <div class="account_setting">
+                     <!-- <h4>Your Qlearn Account</h4> -->
+                     <!-- <p>This is your public presence on qlearn. You need a account to upload your paid courses, comment on courses, purchased by students, or earning.</p> -->
+                     <div class="col-lg-6 col-md-8">
+					<div class="">
+						<!-- <h2 style="margin: 40px">Basic Profle</h2> -->
+						<!-- <p>Basic Profle</p> -->
+						 <form action="{% url 'student:stu_setting'%}" method="post">
+                                 {% csrf_token %}
+							<div class="ui search focus">
+								<div class="ui left icon input swdh11 swdh19">
+									<input class="prompt srch_explore" type="text" name="fullname" id="id_fullname" required="" maxlength="64" placeholder="Full Name" value="{{student_deta.first_name}}">															
+								</div>
+							</div>
+							<div class="ui search focus mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									{{form.username}}
+								</div>
+							</div>
+							<div class="ui search focus mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									<input class="prompt srch_explore" type="text" name="phone" id="phone" required="" maxlength="64" placeholder="Phone" value="{{student_deta.phone}}">															
+								</div>
+							</div>
+
+							<div class="ui search focus mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									{{form.email}}														
+								</div>
+							</div>
+							<div class="ui search focus mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									{{form.password}}											
+								</div>
+							</div>
+							<div class="ui search focus mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									{{form.confirm_password}}														
+								</div>
+							</div>
+							 {{ form.password.errors }}
+           						{{ form.non_field_errors }} 
+							<div class="ui form mt-30 checkbox_sign">
+								<div class="inline field">
+									<!-- <div class="ui checkbox mncheck">
+										<input type="checkbox" tabindex="0" class="hidden">
+										<label>I’m in for emails with exciting discounts and personalized recommendations</label>
+									</div> -->
+								</div>
+							</div>
+							<button class="login-btn" type="submit" style="width: 100px">Update</button>
+						</form>
+						<!-- <p class="sgntrm145">By signing up, you agree to our <a href="terms_of_use.html">Terms of Use</a> and <a href="terms_of_use.html">Privacy Policy</a>.</p> -->
+						<!-- <p class="mb-0 mt-30">Already have an account? <a href="{% url 'student:stu_signin'%}">Log In</a></p> -->
+					</div>
+					<!-- <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Qlearn</strong>. All Rights Reserved.</div> -->
+				</div>
+                     <!-- <button class="save_btn" type="submit">Save Changes</button> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+ {%endblock%}

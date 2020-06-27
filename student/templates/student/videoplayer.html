@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MediaElement.js 4.2.x - audio/video unification library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="{%static 'build/mediaelementplayer.css'%}">
+    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <style>
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        #container {
+            padding: 0 20px 50px;
+        }
+        .error {
+            color: red;
+        }
+        a {
+            word-wrap: break-word;
+        }
+
+        code {
+            font-size: 0.8em;
+        }
+
+        #player2-container .mejs__time-buffering, #player2-container .mejs__time-current, #player2-container .mejs__time-handle,
+        #player2-container .mejs__time-loaded, #player2-container .mejs__time-hovered, #player2-container .mejs__time-marker, #player2-container .mejs__time-total {
+            height: 2px;
+        }
+
+        #player2-container .mejs__time-total {
+            margin-top: 9px;
+        }
+        #player2-container .mejs__time-handle {
+            left: -5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            top: -5px;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            z-index: 2;
+            border: none;
+        }
+        #player2-container .mejs__time-handle-content {
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <section style="display: none" >
+            <h3>Global Options</h3>
+            <form action="#" method="get">
+                <label>Language <select name="lang" style="display: none" >
+                    <option value="ca">Català / Catalan (ca)</option>
+                    <option value="cs">Čeština / Czech (cs)</option>
+                    <option value="de">Deutsch / German (de)</option>
+                    <option value="en" selected>English (en)</option>
+                    <option value="es">Español / Spanish; Castilian (es)</option>
+                    <option value="fa">فارسی / Persian (fa)</option>
+                    <option value="fr">Français / French (fr)</option>
+                    <option value="hr">Hrvatski / Croatian (hr)</option>
+                    <option value="hu">Magyar / Hungarian (hu)</option>
+                    <option value="it">Italiano / Italian (it)</option>
+                    <option value="ja">日本語 / Japanese (ja)</option>
+                    <option value="ko">한국어 / Korean (ko)</option>
+                    <option value="ms">Melayu / Malay (ms)</option>
+                    <option value="nl">Nederlands / Dutch (nl)</option>
+                    <option value="pl">Polski / Polish (pl)</option>
+                    <option value="pt">Português / Portuguese (pt)</option>
+                    <option value="ro">Română / Romanian (ro)</option>
+                    <option value="ru">Русский / Russian (ru)</option>
+                    <option value="sk">Slovensko / Slovak (sk)</option>
+                    <option value="sv">Svenska / Swedish (sv)</option>
+                    <option value="uk">Українська / Ukrainian (uk)</option>
+                    <option value="zh">繁体中文 / Traditional Chinese (zh-TW)</option>
+                    <option value="zh-CN">简体中文 / Simplified Chinese (zh-CN)</option>
+                </select>
+                </label>
+                <label>Stretching (Video Only)<select name="stretching">
+                    <option value="auto" >Auto (default)</option>
+                    <option value="responsive"selected>Responsive</option>
+                    <option value="fill" >Fill</option>
+                    <option value="none" selected>None (original dimensions)</option>
+                </select>
+                </label>
+            </form>
+        </section>
+        <div class="players" id="player1-container">
+            <!-- <h3>Video Player</h3> -->
+            <div class="media-wrapper">
+                <video id="player1" width="740" height="460" style="max-width:100%;" poster="" preload="none" controls playsinline webkit-playsinline>
+                    <source src="{{vdo_url}}">
+                  
+                </video>
+                <div style="text-align: center;">
+                <br><br>
+                Course name : <b>{{course_t}}</b>
+                <br>
+               {% for y in topic_t %}
+                Topic : {{y.topic_title}}
+               {% endfor %}
+                <br>
+                Chapter : {{chap_t}}
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{%static 'build/mediaelement-and-player.js'%}"></script>
+    <script src="{%static 'build/renderers/dailymotion.js'%}"></script>
+    <script src="{%static 'build/renderers/facebook.js'%}"></script>
+    <script src="{%static 'build/renderers/soundcloud.js'%}"></script>
+    <script src="{%static 'build/renderers/twitch.js'%}"></script>
+    <script src="{%static 'build/renderers/vimeo.js'%}"></script>
+    <script src="{%static 'build/lang/cs.js'%}"></script>
+    <script src="{%static 'build/lang/de.js'%}"></script>
+    <script src="{%static 'build/lang/es.js'%}"></script>
+    <script src="{%static 'build/lang/fa.js'%}"></script>
+    <script src="{%static 'build/lang/fr.js'%}"></script>
+    <script src="{%static 'build/lang/hr.js'%}"></script>
+    <script src="{%static 'build/lang/hu.js'%}"></script>
+    <script src="{%static 'build/lang/it.js'%}"></script>
+    <script src="{%static 'build/lang/ja.js'%}"></script>
+    <script src="{%static 'build/lang/ko.js'%}"></script>
+    <script src="{%static 'build/lang/ms.js'%}"></script>
+    <script src="{%static 'build/lang/nl.js'%}"></script>
+    <script src="{%static 'build/lang/pl.js'%}"></script>
+    <script src="{%static 'build/lang/pt.js'%}"></script>
+    <script src="{%static 'build/lang/ro.js'%}"></script>
+    <script src="{%static 'build/lang/ru.js'%}"></script>
+    <script src="{%static 'build/lang/sk.js'%}"></script>
+    <script src="{%static 'build/lang/sv.js'%}"></script>
+    <script src="{%static 'build/lang/uk.js'%}"></script>
+    <script src="{%static 'build/lang/zh-cn.js'%}"></script>
+    <script src="{%static 'build/lang/zh.js'%}"></script>
+    <script src="{%static 'demo.js'%}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+</body>
+</html>

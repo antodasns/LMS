@@ -1,0 +1,128 @@
+﻿{%extends 'student/student_layout.html'%}
+{% load static %}
+{%block content%}
+	<!-- Left Sidebar Start -->
+	<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_index'%}" class="menu--link" title="Home">
+							<i class='uil uil-home-alt menu--icon'></i>
+							<span class="menu--label">Home</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_courses'%}" class="menu--link" title="Live Streams">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Courses</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_purchased_courses'%}" class="menu--link" title="Explore">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Purchased Courses</span>
+						</a>
+					</li>
+					
+					
+					<li class="menu--item">
+						<a href="{% url 'student:stu_message'%}" class="menu--link" title="Categories">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item  menu--item__has_sub_menu">
+						<label class="menu--link" title="Tests">
+						  <i class='uil uil-clipboard-alt menu--icon'></i>
+						  <span class="menu--label">Tests</span>
+						</label>
+						
+					</li> -->
+					<li class="menu--item">
+						<a href="#" class="menu--link active" title="Categories">
+							<i class='uil uil-award menu--icon'></i>
+							<span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_statement'%}" class="menu--link" title="Categories">
+							<i class='uil uil-file-alt menu--icon'></i>
+							<span class="menu--label">Statements</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_setting'%}" class="menu--link" title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Setting</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item">
+						<a href="{% url 'student:stu_help'%}" class="menu--link" title="Help">
+							<i class='uil uil-question-circle menu--icon'></i>
+							<span class="menu--label">Help</span>
+						</a>
+					</li> -->
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-award"></i> My Certificates</h2>
+					</div>					
+				</div>				
+				<div class="row">
+					<div class="col-12">
+						<div class="mt-10">
+							
+							<div class="table-cerificate">
+								<div class="table-responsive">
+									<table class="table ucp-table" id="content-table">
+										<thead class="thead-s">
+											<tr>
+												<th scope="col">Item No.</th>
+												<th scope="col">Course</th>
+												<th scope="col">Certificate</th>
+											</tr>
+										</thead>
+										<tbody>
+											
+											{% for b in issued_certificates %}
+											{% for a in course %}
+											{% if b.course_id == a.id %}
+											<tr>
+												<td class="text-center">{{forloop.counter}}</td>
+												<td class="cell-ta">{{a.course_title}}</td>
+												<td class="text-center"><a href="media/{{b.certificate}}" target="_blank">View</a></td>
+											</tr>
+											{% endif %}
+											{% endfor %}
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ {%endblock%}

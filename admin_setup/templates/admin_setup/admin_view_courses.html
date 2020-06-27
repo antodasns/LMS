@@ -1,0 +1,162 @@
+{%extends 'admin_setup/admin_layout.html'%}
+{% load static %}
+{%block content%}
+
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_index'%}" class="menu--link" title="Dashboard">
+							<i class="uil uil-apps menu--icon"></i>
+							<span class="menu--label">Dashboard</span>
+						</a>
+					</li>
+					<li class="menu--item">
+
+
+						<a href="{% url 'admin_setup:admin_viewcourse'%}" class="menu--link active" title="Courses">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label"> View Courses</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_createcourse'%}" class="menu--link" title="Create Course">
+							<i class='uil uil-plus-circle menu--icon'></i>
+							<span class="menu--label">Create Course</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_viewstudent'%}" class="menu--link" title="Statements">
+						  <i class='uil uil-file-alt menu--icon'></i>
+						  <span class="menu--label">Student view</span>
+						</a>
+					</li>
+				
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_message'%}" class="menu--link" title="Messages">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+				
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_certificates'%}" class="menu--link" title="My Certificates">
+						  <i class='uil uil-award menu--icon'></i>
+						  <span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_reports'%}" class="menu--link" title="Analyics">
+							<i class='uil uil-analysis menu--icon'></i>
+							<span class="menu--label">Reports</span>
+						</a>
+					</li>
+					
+					
+					
+				</ul>
+			</div>
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_settings'%}" class="menu--link" title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Settings</span>
+						</a>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<!-- <div class="col-xl-12 col-lg-8">
+						<div class="section3125">
+							<div class="explore_search">
+								<div class="ui search focus">
+									<div class="ui left icon input swdh11">
+										<input class="prompt srch_explore" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">
+										<i class="uil uil-search-alt icon icon2"></i>
+									</div>
+								</div>
+							</div>							
+						</div>							
+					</div> -->
+					
+					<div class="col-md-12">
+						<div class="_14d25">
+							<div class="row">
+								{% for x in details %}
+								<div class="col-lg-3 col-md-4">
+									<div class="fcrse_1 mt-30">
+										<a href="{% url 'admin_setup:admin_courses_details' x.id %}" class="fcrse_img">
+											<img src="{{x.course_image.url}}" alt="" style="height: 180px;">
+											<div class="course-overlay">
+												<!-- <div class="badge_seller">Bestseller</div> -->
+												<!-- <div class="crse_reviews">
+													<i class="uil uil-star"></i>4.5
+												</div> -->
+												<span class="play_btn1"><i class="uil uil-play"></i></span>
+												<!-- <div class="crse_timer">
+													25 hours
+												</div> -->
+											</div>
+										</a>
+										<div class="fcrse_content">
+											<div class="eps_dots more_dropdown">
+												<a href="{% url 'admin_setup:admin_courses_details' x.id %}"><i class="uil uil-ellipsis-v"></i></a>
+												<div class="dropdown-content">
+													<a href="{% url 'admin_setup:admin_edit_course_deatails' x.id %}"><span><i class='uil uil-edit-alt'></i>Edit</span></a>
+													<a href="{% url 'admin_setup:admin_delete_course' x.id %}"><span><i class="uil uil-trash-alt"></i>Delete</span></a>
+													
+													<!-- <span><i class='uil uil-ban'></i>Not Interested</span>
+													<span><i class="uil uil-windsock"></i>Report</span> -->
+												</div>																											
+											</div>
+											<!-- <div class="vdtodt">
+												<span class="vdt14">109k views</span>
+												<span class="vdt14">15 days ago</span>
+											</div> -->
+											<a href="{% url 'admin_setup:admin_courses_details' x.id %}" class="crse14s">{{x.course_title}}</a>
+											<!-- <a href="#" class="crse-cate">Web Development | Python</a> -->
+											<div class="auth1lnkprce">
+												<a href="{% url 'admin_setup:admin_edit_add_topic' x.id %}" class="btn1542">Add Topics</a>
+												<div class="prce142">{{x.course_price}} <span class="iconify" data-icon="uil-rupee-sign" data-inline="false"></span></div>
+											</div>
+										</div>
+									</div>													
+								</div>
+								{% endfor %}
+
+								<!-- <div class="col-md-12">
+									<div class="main-loader mt-50">													
+										<div class="spinner">
+											<div class="bounce1"></div>
+											<div class="bounce2"></div>
+											<div class="bounce3"></div>
+										</div>																										
+									</div>
+								</div> -->
+							</div>				
+						</div>				
+					</div>				
+				</div>
+			</div>
+		</div>
+{%endblock%}

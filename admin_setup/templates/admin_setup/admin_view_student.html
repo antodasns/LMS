@@ -1,0 +1,136 @@
+{%extends 'admin_setup/admin_layout.html'%}
+{% load static %}
+{%block content%}
+<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_index'%}" class="menu--link" title="Dashboard">
+							<i class="uil uil-apps menu--icon"></i>
+							<span class="menu--label">Dashboard</span>
+						</a>
+					</li>
+					<li class="menu--item">
+
+
+						<a href="{% url 'admin_setup:admin_viewcourse'%}" class="menu--link" title="Courses">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label"> View Courses</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_createcourse'%}" class="menu--link" title="Create Course">
+							<i class='uil uil-plus-circle menu--icon'></i>
+							<span class="menu--label">Create Course</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_viewstudent'%}" class="menu--link active" title="Statements">
+						  <i class='uil uil-file-alt menu--icon'></i>
+						  <span class="menu--label">Student view</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_message'%}" class="menu--link" title="Messages">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_certificates'%}" class="menu--link" title="My Certificates">
+						  <i class='uil uil-award menu--icon'></i>
+						  <span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_reports'%}" class="menu--link" title="Analyics">
+							<i class='uil uil-analysis menu--icon'></i>
+							<span class="menu--label">Reports</span>
+						</a>
+					</li>
+					
+					
+					
+				</ul>
+			</div>
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_settings'%}" class="menu--link" title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Settings</span>
+						</a>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+								
+					<div class="col-md-12">
+						
+					</div>					
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="my_courses_tabs">
+							
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-my-courses" role="tabpanel">
+									<div class="table-responsive mt-30">
+										<table class="table ucp-table">
+											<thead class="thead-s">
+												<tr>
+													<th class="text-center" scope="col">ID</th>
+													<th>Name</th>
+													<th class="text-center" scope="col">Admission date</th>
+													<th class="text-center" scope="col">Phone</th>
+													<th class="text-center" scope="col">E-Mail</th>
+													<th class="text-center" scope="col">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													{% for x in details %}
+													<td class="text-center">{{x.id}}</td>
+													<td><a href="{% url 'admin_setup:admin_view_student_details' x.login_id %}">{{x.first_name}}</a></td>
+													<td class="text-center">{{x.created_date|date:'Y-m-d | h:i a'}}</td>
+													<td class="text-center">{{x.phone}}</td>
+													<td class="text-center">{{x.email}}</td>
+													<td class="text-center">
+														<a href="{% url 'admin_setup:admin_view_student_details' x.login_id %}" title="View" class="gray-s"><i class="uil uil-eye"></i></a>
+														<a href="{% url 'admin_setup:admin_delete_student' x.login_id %}" title="View" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+													</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		 {%endblock%}

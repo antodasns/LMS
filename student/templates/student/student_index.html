@@ -1,0 +1,160 @@
+{%extends 'student/student_layout.html'%}
+{% load static %}
+{%block content%}
+	<!-- Left Sidebar Start -->
+	<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="#" class="menu--link active" title="Home">
+							<i class='uil uil-home-alt menu--icon'></i>
+							<span class="menu--label">Home</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_courses'%}" class="menu--link" title="Live Streams">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Courses</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_purchased_courses'%}" class="menu--link" title="Explore">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Purchased Courses</span>
+						</a>
+					</li>
+					
+					
+					<li class="menu--item">
+						<a href="{% url 'student:stu_message'%}" class="menu--link" title="Categories">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item  menu--item__has_sub_menu">
+						<label class="menu--link" title="Tests">
+						  <i class='uil uil-clipboard-alt menu--icon'></i>
+						  <span class="menu--label">Tests</span>
+						</label>
+						
+					</li> -->
+					<li class="menu--item">
+						<a href="{% url 'student:stu_certificate'%}" class="menu--link" title="Categories">
+							<i class='uil uil-award menu--icon'></i>
+							<span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_statement'%}" class="menu--link" title="Categories">
+							<i class='uil uil-file-alt menu--icon'></i>
+							<span class="menu--label">Statements</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_setting'%}" class="menu--link" title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Setting</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item">
+						<a href="{% url 'student:stu_help'%}" class="menu--link" title="Help">
+							<i class='uil uil-question-circle menu--icon'></i>
+							<span class="menu--label">Help</span>
+						</a>
+					</li> -->
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-apps"></i> Student Dashboard</h2>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="card_dash">
+							<div class="card_dash_left">
+								<h5>Total Purchased Courses</h5><br>
+								<!-- <h2>15</h2> -->
+								<span class="crdbg_3" style="font-size: 20px">{{count}}</span>
+							</div>
+							<div class="card_dash_right">
+								<img src="{%static 'images/dashboard/online-course.svg'%}" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="card_dash">
+							<div class="card_dash_left">
+								<h5>Total Certificates</h5><br>
+								<!-- <h2>45</h2> -->
+								<span class="crdbg_3" style="font-size: 20px;bottom:10px">{{count1}}</span>
+							</div>
+							<div class="card_dash_right">
+								<img src="{%static 'images/dashboard/knowledge.svg'%}" alt="">
+							</div>
+						</div>
+					</div>				
+				</div>
+				<div class="row">									
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="section3125 mt-50">
+							<h4 class="item_title">Recently Bought Courses</h4>
+							<div class="la5lo1">
+								<div class="owl-carousel edututs_news owl-theme">
+									{% for x,y,z in zippy %}
+									<div class="item">
+										<div class="fcrse_1">
+											<a href="#" class="fcrse_img">
+												<img src="../media/{{y}}" alt="">												
+											</a>
+											<div class="fcrse_content">
+												<a href="{% url 'student:stu_purchase_courses_details' z %}" class="crsedt145 mt-15">{{x}}</a>
+												<!-- <p class="news_des45">See the latest updates to coronavirus-related content, including changes to monetization, and access new Creator support resources</p> -->
+												<div class="auth1lnkprce">
+													<!-- <a href="#" class="cr1fot50">Learn More</a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="col-xl-4 col-lg-6 col-md-6">
+						<div class="section3125 mt-50">
+							<h4 class="item_title">What's special in Qlearn</h4>
+							<div class="la5lo1">	
+								<div class="fcrse_1">
+									<div class="fcrse_content">
+										<a href="#" class="new_links10">Study anything anywhere at anytime</a>
+										<a href="#" class="new_links10">Classes at your fingure tips</a>
+										<a href="#" class="new_links10">Lectures made for you</a>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ {%endblock%}

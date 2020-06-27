@@ -1,0 +1,174 @@
+{%extends 'student/student_layout.html'%}
+{% load static %}
+{%block content%}
+	<!-- Left Sidebar Start -->
+	<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_index'%}" class="menu--link" title="Home">
+							<i class='uil uil-home-alt menu--icon'></i>
+							<span class="menu--label">Home</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_courses'%}" class="menu--link" title="Live Streams">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Courses</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_purchased_courses'%}" class="menu--link" title="Explore">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label">Purchased Courses</span>
+						</a>
+					</li>
+					
+					
+					<li class="menu--item">
+						<a href="#" class="menu--link active" title="Categories">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item  menu--item__has_sub_menu">
+						<label class="menu--link" title="Tests">
+						  <i class='uil uil-clipboard-alt menu--icon'></i>
+						  <span class="menu--label">Tests</span>
+						</label>
+						
+					</li> -->
+					<li class="menu--item">
+						<a href="{% url 'student:stu_certificate'%}" class="menu--link" title="Categories">
+							<i class='uil uil-award menu--icon'></i>
+							<span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_statement'%}" class="menu--link" title="Categories">
+							<i class='uil uil-file-alt menu--icon'></i>
+							<span class="menu--label">Statements</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'student:stu_setting'%}" class="menu--link" title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Setting</span>
+						</a>
+					</li>
+					<!-- <li class="menu--item">
+						<a href="{% url 'student:stu_help'%}" class="menu--link" title="Help">
+							<i class='uil uil-question-circle menu--icon'></i>
+							<span class="menu--label">Help</span>
+						</a>
+					</li> -->
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col-lg-12">	
+						<h2 class="st_title"><i class="uil uil-comments"></i> Messages</h2>
+					</div>					
+				</div>				
+				<div class="row">
+					<div class="col-12">
+						<div class="all_msg_bg">
+							<div class="row no-gutters">
+								<div class="col-xl-4 col-lg-5 col-md-12">					
+									<div class="msg_search">
+										<div class="ui search focus">
+											<div class="ui left icon input swdh11 swdh15">
+												<input class="prompt srch_explore" type="text" placeholder="Search Messages...">
+												<i class="uil uil-search-alt icon icon8"></i>
+											</div>
+										</div>
+									</div>
+									<div class="simplebar-content-wrapper">
+										<div class="group_messages">
+											{% for x in c_buy %}
+											{% for y in c_detai %}
+											{% if x.course_id == y.id %}
+											<a href="{% url 'student:stu_doubt_message' y.id %}">
+											<div class="chat__message__dt">
+												<div class="user-status">											
+													<div class="user-avatar">
+														<img src="{%static 'images/left-imgs/img-1.jpg' %}" alt="">
+														<!-- <div class="msg__badge">Course name</div> -->
+													</div>
+													<p class="user-status-title"><span class="bold">{{y.course_title}}</span></p>
+													<p class="user-status-text">Hi! Student, Please ask your doubts.</p>
+													<!-- <p class="user-status-time floaty">7 hours ago</p> -->
+												</div>
+											</div>
+											</a>
+											{% endif %}
+											{% endfor %}
+											{% endfor %}
+										</div>
+									</div>					
+								</div>
+								<div class="col-xl-8 col-lg-7 col-md-12">			
+									<div class="chatbox_right">
+										<div class="chat_header">
+											<div class="user-status">											
+												<div class="user-avatar">
+													<img src="images/left-imgs/img-1.jpg" alt="">
+												</div>
+												{% if c_buy %}
+												<p class="user-status-text"style="text-align: center;font-size: 20px"><b>Select a course</b></p>
+												<input type="text" name="" id="title" style="display: none;" value="{{c_title}}">
+												{% else %}
+												<p class="user-status-text"style="text-align: center;font-size: 20px"><b>No Courses Brought</b></p>
+												<input type="text" name="" id="title" style="display: none;" value="">
+												<!-- <p class="user-status-tag online">Online</p>													 -->
+												{% endif %}								
+											</div>
+										</div>
+										
+										<div class="messages-line simplebar-content-wrapper2 scrollstyle_4">											
+											<div class="mCustomScrollbar">
+											
+											</div>
+										</div>
+										
+										<div class="message-send-area">
+											<form action="" method="post">
+												 {% csrf_token %}
+												<div class="mf-field">
+													<div class="ui search focus input__msg">
+														<div class="ui left icon input swdh19">
+															<input class="prompt srch_explore" type="text" id="chat-widget-message-text-2" name="chat_widget_message_text_2" placeholder="Write a message...">
+														</div>
+													</div>
+													<button class="add_msg" type="submit" id="subm"><i class="uil uil-message"></i></button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ {%endblock%}

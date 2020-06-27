@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+	
+	<head>
+	<meta charset="utf-8">		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Qlearn</title>
+		
+		<!-- Favicon Icon -->
+		<link rel="icon" type="image/png" href="{%static 'images/logo.svg'%}">
+		
+		<!-- Stylesheets -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+		<link href="{%static 'vendor/unicons-2.0.1/css/unicons.css.css'%}" rel='stylesheet'>
+		<link href="{%static 'css/vertical-responsive-menu.min.css'%}" rel="stylesheet">
+		<link href="{%static 'css/style.css'%}" rel="stylesheet">
+		<link href="{%static 'css/responsive.css'%}" rel="stylesheet">
+		
+		<!-- Vendor Stylesheets -->
+		<link href="{%static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+		<link href="{%static 'vendor/OwlCarousel/assets/owl.carousel.css'%}" rel="stylesheet">
+		<link href="{%static 'vendor/OwlCarousel/assets/owl.theme.default.min.css'%}" rel="stylesheet">
+		<link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{%static 'vendor/semantic/semantic.min.css'%}">	
+		
+	</head> 
+
+<body>
+	<!-- Header Start -->
+	<header class="invoice_header clearfix">
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-md-8">
+					<div class="invoice_header_main" style="background-color: white">
+						<div class="invoice_header_item">
+							<div class="invoice_logo">
+								<a href="index.html"><img src="{%static 'images/logo.svg'%}" alt="" height="150px" width="150px" style="margin: -53px"></a>
+							</div>
+							<p style="color: black">Invoice</p>
+						</div>						
+					</div>						
+				</div>		
+			</div>
+		</div>
+	</header>
+	<!-- Header End -->
+	<!-- Body Start -->
+	<div class="wrapper _bg4586 _new89 p-0">		
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-md-8">
+					<div class="invoice_body">
+						<div class="invoice_date_info">
+							<ul>
+								<li><div class="vdt-list"><span>Date :</span>10 April 2020</div></li>
+								<li><div class="vdt-list"><span>Invoice No :</span>IVIP12023598</div></li>
+								<li><div class="vdt-list"><span>Order ID :</span>1258963487</div></li>
+							</ul>
+						</div>
+						<div class="invoice_dts">
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="invoice_title">Invoice</h2>
+								</div>
+								<div class="col-md-6">
+									<div class="vhls140">
+										<h4>To</h4>
+										<ul>
+											<li><div class="vdt-list">{{student_deta.user_name}}</div></li>
+											<li><div class="vdt-list">{{student_deta.phone}}</div></li>
+											<li><div class="vdt-list">{{student_deta.email}}</div></li>
+											<!-- <li><div class="vdt-list">01826</div></li>
+											<li><div class="vdt-list">United States</div></li> -->
+										</ul>
+									</div>		
+								</div>
+								<div class="col-md-6">
+									<div class="vhls140">
+										<h4>Qlearn</h4>
+										<ul>
+											<li><div class="vdt-list">Qnexa Solutions</div></li>
+											<li><div class="vdt-list">Trivandrum</div></li>
+											<li><div class="vdt-list">Kerala</div></li>
+											<li><div class="vdt-list">India</div></li>
+											
+										</ul>
+									</div>		
+								</div>
+							</div>
+						</div>
+						<div class="invoice_table">
+							<div class="table-responsive-md">
+								<table class="table table-borderless">
+									<thead>
+										<tr>
+										  <th scope="col">Item</th>
+										  <th scope="col">Price</th>
+										  <!-- <th scope="col">Vat(20%)</th> -->
+										  <th scope="col">Total Amount</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">
+												<div class="user_dt_trans">
+													<p>{{course_deta.course_title}}</p>
+												</div>
+											</th>
+											<td>
+												<div class="user_dt_trans">														
+													<p> {{course_deta.course_price}} <span class="iconify" data-icon="uil-rupee-sign" data-inline="false"></p>
+												</div>
+											</td>
+											<!-- <td>
+												<div class="user_dt_trans">
+													<p>$10.00</p>
+												</div>
+											</td> -->
+											<td>
+												<div class="user_dt_trans">														
+													<p>{{course_deta.course_price}} <span class="iconify" data-icon="uil-rupee-sign" data-inline="false"></p>
+												</div>
+											</td>												
+										</tr>
+										<tr>
+											<td colspan="1"></td>
+											<td colspan="3">
+												<div class="user_dt_trans jsk1145">														
+													<div class="totalinv2">Invoice Total :{{course_deta.course_price}} <span class="iconify" data-icon="uil-rupee-sign" data-inline="false"></div>
+													<!-- <p>Paid via Paypal</p> -->
+												</div>
+											</td>												
+										</tr>											
+									</tbody>
+								</table>														
+							</div>
+						</div>
+						<div class="invoice_footer">
+							<div class="leftfooter">
+								<p>Thanks for buying.</p>
+							</div>
+							<div class="righttfooter">
+								<a class="print_btn" href="javascript:window.print();">Print</a> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<!-- Body End -->
+
+	<script src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+	<script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+	<script src="{%static 'vendor/OwlCarousel/owl.carousel.js'%}"></script>
+	<script src="{%static 'vendor/semantic/semantic.min.js'%}"></script>
+	<script src="{%static 'js/custom.js'%}"></script>	
+	<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+	
+</body>
+
+<!-- Mirrored from gambolthemes.net/html-items/qlearn_demo_f12/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 May 2020 15:31:44 GMT -->
+</html>

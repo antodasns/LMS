@@ -1,0 +1,184 @@
+{%extends 'admin_setup/admin_layout.html'%}
+{% load static %}
+{%block content%}
+<nav class="vertical_nav">
+		<div class="left_section menu_left" id="js-menu" >
+			<div class="left_section">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_index'%}" class="menu--link" title="Dashboard">
+							<i class="uil uil-apps menu--icon"></i>
+							<span class="menu--label">Dashboard</span>
+						</a>
+					</li>
+					<li class="menu--item">
+
+
+						<a href="{% url 'admin_setup:admin_viewcourse'%}" class="menu--link active" title="Courses">
+							<i class='uil uil-book-alt menu--icon'></i>
+							<span class="menu--label"> View Courses</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_createcourse'%}" class="menu--link" title="Create Course">
+							<i class='uil uil-plus-circle menu--icon'></i>
+							<span class="menu--label">Create Course</span>
+						</a>
+					</li>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_viewstudent'%}" class="menu--link" title="Statements">
+						  <i class='uil uil-file-alt menu--icon'></i>
+						  <span class="menu--label">Student view</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_message'%}" class="menu--link" title="Messages">
+							<i class='uil uil-comments menu--icon'></i>
+							<span class="menu--label">Messages</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_certificates'%}" class="menu--link" title="My Certificates">
+						  <i class='uil uil-award menu--icon'></i>
+						  <span class="menu--label">Certificates</span>
+						</a>
+					</li>
+					
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_reports'%}" class="menu--link" title="Analyics">
+							<i class='uil uil-analysis menu--icon'></i>
+							<span class="menu--label">Reports</span>
+						</a>
+					</li>
+					
+					
+					
+				</ul>
+			</div>
+			<div class="left_section pt-2">
+				<ul>
+					<li class="menu--item">
+						<a href="{% url 'admin_setup:admin_settings'%}" class="menu--link " title="Setting">
+							<i class='uil uil-cog menu--icon'></i>
+							<span class="menu--label">Settings</span>
+						</a>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="left_footer">
+				
+				<div class="left_footer_content">
+					<p>© 2020 <strong>Qlearn</strong>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+<div class="wrapper">
+<div class="sa4d25">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-12">
+            <h2 class="st_title"><i class='uil uil-cog'></i> Edit Details</h2>
+            <div class="setting_tabs">
+            </div>
+            <br><br>
+            <div class="tab-content" id="pills-tabContent">
+            	<ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" href="#" role="tab" aria-controls="pills-my-courses" aria-selected="true"><i class="uil uil-book-alt"></i>Edit Details</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'admin_setup:admin_edit_course_content' details.id %}" role="tab" aria-controls="pills-my-purchases" aria-selected="false"><i class="uil uil-download-alt"></i>Edit Contents</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'admin_setup:admin_edit_add_topic' details.id %}" role="tab" aria-controls="pills-upcoming-courses" aria-selected="false"><i class="uil uil-upload-alt"></i>Add Topics&Chapters</a>
+					</li>
+					
+				</ul>
+               <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+                  <div class="account_setting">
+                     <!-- <h4>Your Qlearn Account</h4> -->
+                     <!-- <p>This is your public presence on qlearn. You need a account to upload your paid courses, comment on courses, purchased by students, or earning.</p> -->
+                     <div class="col-lg-12 col-md-12">
+					<div class="">
+						<!-- <h2 style="margin: 40px">Basic Profle</h2> -->
+						<!-- <p>Basic Profle</p> -->
+						 <form action="{% url 'admin_setup:admin_edit_course_deatails' details.id %}" method="post" enctype="multipart/form-data">
+                                 {% csrf_token %}
+						
+							<div class="col-lg-6 col-md-6">															
+								<div class="ui search focus mt-30 lbel25">
+									<label>Course Title</label>
+									<div class="ui left icon input swdh19">
+										<input class="prompt srch_explore" type="text" placeholder="Insert your course title." name="course_title" data-purpose="edit-course-title" id="course_title" value="{{details.course_title}}">															
+									</div>
+								</div>									
+							</div>
+						
+						
+							<div class="col-lg-6 col-md-6">															
+								<div class="course_des_textarea mt-30 lbel25">
+								<label>Course Description</label>
+								<div class="course_des_bg">
+									<ul class="course_des_ttle">
+										<li><a href="#"><i class="uil uil-bold"></i></a></li>
+										<li><a href="#"><i class="uil uil-italic"></i></a></li>
+										<li><a href="#"><i class="uil uil-list-ul"></i></a></li>
+										<li><a href="#"><i class="uil uil-left-to-right-text-direction"></i></a></li>
+										<li><a href="#"><i class="uil uil-right-to-left-text-direction"></i></a></li>
+										<li><a href="#"><i class="uil uil-list-ui-alt"></i></a></li>
+										<li><a href="#"><i class="uil uil-link"></i></a></li>
+										<li><a href="#"><i class="uil uil-text-size"></i></a></li>
+										<li><a href="#"><i class="uil uil-text"></i></a></li>
+									</ul>
+									<div class="textarea_dt">															
+										<div class="ui form swdh339">
+											<div class="field">
+												<textarea rows="5" name="course_description" id="id_course_description" placeholder="Insert your course description">{{details.course_description}}</textarea>
+											</div>
+										</div>										
+									</div>
+								</div>
+							</div>							
+							</div>
+							<div class="col-lg-6 col-md-6">															
+								<div class="ui search focus mt-30 lbel25">
+									<label>Price <i class="uil uil-dollar-sign-alt"></i></label>
+									<div class="ui left icon input swdh19">
+										<input class="prompt srch_explore" type="text" placeholder="Price" name="course_price" data-purpose="edit-course-title" maxlength="60" id="cour_price" value="{{details.course_price}}">															
+										
+									</div>
+								</div>									
+							</div>
+							<div class="col-lg-6 col-md-6">															
+								<div class="ui search focus mt-30 lbel25">
+									<label>Course Image</label>
+									<div class="ui left icon input swdh19">
+										<input class="prompt srch_explore" type="file" placeholder="Insert your course title." name="course_image" data-purpose="edit-course-title"  >															
+									</div>
+								</div>									
+							</div>
+							<br><br>
+							<button class="upload_btn" type="submit" style="width: 100px">Update</button>
+						</form>
+						<!-- <p class="sgntrm145">By signing up, you agree to our <a href="terms_of_use.html">Terms of Use</a> and <a href="terms_of_use.html">Privacy Policy</a>.</p> -->
+						<!-- <p class="mb-0 mt-30">Already have an account? <a href="{% url 'student:stu_signin'%}">Log In</a></p> -->
+					</div>
+					<!-- <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Qlearn</strong>. All Rights Reserved.</div> -->
+				</div>
+                     <!-- <button class="save_btn" type="submit">Save Changes</button> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+ {%endblock%}
